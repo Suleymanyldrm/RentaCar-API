@@ -29,9 +29,9 @@ namespace RentaCar_API.Controllers
 
         //Araç tablosunda Seçtiğimiz ofise göre araçları listeliyor.
         [HttpGet("reservation")]
-        public async Task<List<Car>> Get(int? id)
+        public async Task<List<Car>> Get(string? location)  
         {
-            return await _rentaCarContext.Cars.Where(o => o.Officies.Id == id)
+            return await _rentaCarContext.Cars.Where(o => o.Officies.Name == location)
                                         .Include(o => o.FuelType)
                                         .Include(o => o.TransmissionType)
                                         .Include(o => o.Brand)
@@ -148,10 +148,34 @@ namespace RentaCar_API.Controllers
                                             .Select(o => new CarModal()
                                             {
                                                 Id = o.Id,
-                                                Name = o.Name,
+                                                Name = o.Name,  
                                                 Cars = o.Cars
                                             }).ToListAsync();
         }
 
+        //[HttpPost("Location")]
+        //public async Task<IActionResult> Post(Officies location)
+        //{
+        //    try
+        //    {
+        //        var added = _rentaCarContext.Officies.Where(x => x.Location == location);
+        //        _rentaCarContext.Officies.AddAsync(added);
+        //        await _rentaCarContext.SaveChanges();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return (IActionResult)ex;
+        //    }
+        //    return Ok();
+        //}
+
+        [HttpDelete("DeleteCar")]
+        public async Task<IActionResult> DeleteCar(int id)
+        {
+            var deleted = await _rentaCarContext.Cars.Where(d => d.Id == id).FirstOrDefaultAsync();
+            _rentaCarContext.Remove(deleted);
+            await _rentaCarContext.SaveChangesAsync();
+            return Ok(deleted);
+        }
     }
 }

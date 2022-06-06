@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RentaCar_API.Data;
 
 namespace RentaCar_API.Migrations
 {
     [DbContext(typeof(RentaCarContext))]
-    partial class RentaCarContextModelSnapshot : ModelSnapshot
+    [Migration("20220602163909_UpdateSlug")]
+    partial class UpdateSlug
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
