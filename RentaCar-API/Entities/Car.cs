@@ -9,8 +9,6 @@ namespace RentaCar_API.Entities
     {
         public int Id { get; set; }
         public double Price { get; set; }
-        public string ImgURL { get; set; }
-        public Brand Brand { get; set; }
         public Officies Officies { get; set; }
         public CarModal CarModal { get; set; }
         public TransmissionType TransmissionType { get; set; }

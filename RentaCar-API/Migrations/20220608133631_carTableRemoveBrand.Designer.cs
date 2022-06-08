@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RentaCar_API.Data;
 
 namespace RentaCar_API.Migrations
 {
     [DbContext(typeof(RentaCarContext))]
-    partial class RentaCarContextModelSnapshot : ModelSnapshot
+    [Migration("20220608133631_carTableRemoveBrand")]
+    partial class carTableRemoveBrand
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,6 +52,9 @@ namespace RentaCar_API.Migrations
                     b.Property<int?>("FuelTypeId")
                         .HasColumnType("int");
 
+                    b.Property<string>("ImgURL")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("OfficiesId")
                         .HasColumnType("int");
 
@@ -83,12 +88,6 @@ namespace RentaCar_API.Migrations
 
                     b.Property<int?>("BrandId")
                         .HasColumnType("int");
-
-                    b.Property<double>("EngineCapacity")
-                        .HasColumnType("float");
-
-                    b.Property<string>("ImgURL")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -251,7 +250,7 @@ namespace RentaCar_API.Migrations
             modelBuilder.Entity("RentaCar_API.Entities.CarModal", b =>
                 {
                     b.HasOne("RentaCar_API.Entities.Brand", "Brand")
-                        .WithMany("CarModals")
+                        .WithMany()
                         .HasForeignKey("BrandId");
 
                     b.Navigation("Brand");
@@ -270,11 +269,6 @@ namespace RentaCar_API.Migrations
                     b.Navigation("Car");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("RentaCar_API.Entities.Brand", b =>
-                {
-                    b.Navigation("CarModals");
                 });
 
             modelBuilder.Entity("RentaCar_API.Entities.CarModal", b =>

@@ -34,20 +34,17 @@ namespace RentaCar_API.Controllers
             return await _rentaCarContext.Cars.Where(o => o.Officies.Name == location)
                                         .Include(o => o.FuelType)
                                         .Include(o => o.TransmissionType)
-                                        .Include(o => o.Brand)
-                                        .Include(o => o.CarModal)
+                                        .Include(o => o.CarModal).ThenInclude(o => o.Brand)
                                         .Include(o => o.Officies)
                                         .Include(o => o.Classification)
                                         .Select(o => new Car()
                                         {
                                             Id = o.Id,
                                             Price = o.Price,
-                                            ImgURL = o.ImgURL,
                                             CarModal = o.CarModal,
                                             Officies = o.Officies,
                                             FuelType = o.FuelType,
                                             TransmissionType = o.TransmissionType,
-                                            Brand = o.Brand,
                                             Classification = o.Classification,
                                         }).ToListAsync();
         }
@@ -57,16 +54,15 @@ namespace RentaCar_API.Controllers
         public async Task<List<Car>> ListCar()
         {
             return await _rentaCarContext.Cars
+                                        .Include(o => o.CarModal).ThenInclude(o => o.Brand)
                                         .Select(o => new Car()
                                         {
                                             Id = o.Id,
                                             Price = o.Price,
-                                            ImgURL = o.ImgURL,
                                             Officies = o.Officies,
                                             CarModal = o.CarModal,
                                             FuelType = o.FuelType,
                                             TransmissionType = o.TransmissionType,
-                                            Brand = o.Brand,
                                             Classification = o.Classification,
                                         }).ToListAsync();
                                         
@@ -86,20 +82,19 @@ namespace RentaCar_API.Controllers
         [HttpGet("VehicleForTheBrand")]
         public async Task<List<Car>> BrandCar(int? id)
         {
-            return await _rentaCarContext.Cars.Where(o => o.Brand.Id == id)
+            return await _rentaCarContext.Cars.Where(o => o.CarModal.Brand.Id == id)
+                                        .Include(o => o.CarModal).ThenInclude(o => o.Brand)
                                         .Select(o => new Car()
                                         {
                                             Id = o.Id,
                                             Price = o.Price,
-                                            ImgURL = o.ImgURL,
                                             Officies = o.Officies,
                                             CarModal = o.CarModal,
                                             FuelType = o.FuelType,
                                             TransmissionType = o.TransmissionType,
-                                            Brand = o.Brand,
                                             Classification = o.Classification,
                                         }).ToListAsync();
-                                          
+
         }
 
         //Araç tablosunda araç model ID sine göre filtreleme yapıyoruz.
@@ -107,19 +102,18 @@ namespace RentaCar_API.Controllers
         public async Task<List<Car>> CarModalCar(int? id)
         {
             return await _rentaCarContext.Cars.Where(o => o.CarModal.Id == id)
+                                        .Include(o => o.CarModal).ThenInclude(o => o.Brand)
                                         .Select(o => new Car()
                                         {
                                             Id = o.Id,
                                             Price = o.Price,
-                                            ImgURL = o.ImgURL,
                                             Officies = o.Officies,
                                             CarModal = o.CarModal,
                                             FuelType = o.FuelType,
                                             TransmissionType = o.TransmissionType,
-                                            Brand = o.Brand,
                                             Classification = o.Classification,
                                         }).ToListAsync();
-                                        
+
 
         }
 
@@ -135,7 +129,6 @@ namespace RentaCar_API.Controllers
                                                 Id = o.Id,
                                                 Name = o.Name,
                                                 Brand = o.Brand,
-
                                             }).ToListAsync();
         }
 
@@ -152,22 +145,6 @@ namespace RentaCar_API.Controllers
                                                 Cars = o.Cars
                                             }).ToListAsync();
         }
-
-        //[HttpPost("Location")]
-        //public async Task<IActionResult> Post(Officies location)
-        //{
-        //    try
-        //    {
-        //        var added = _rentaCarContext.Officies.Where(x => x.Location == location);
-        //        _rentaCarContext.Officies.AddAsync(added);
-        //        await _rentaCarContext.SaveChanges();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return (IActionResult)ex;
-        //    }
-        //    return Ok();
-        //}
 
         [HttpDelete("DeleteCar")]
         public async Task<IActionResult> DeleteCar(int id)
