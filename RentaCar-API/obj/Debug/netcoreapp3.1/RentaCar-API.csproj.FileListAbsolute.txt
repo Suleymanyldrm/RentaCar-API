@@ -65,3 +65,5 @@ C:\Users\SULEYMAN\OneDrive\Masaüstü\RentaCar-API\RentaCar-API\obj\Debug\netcor
 C:\Users\SULEYMAN\OneDrive\Masaüstü\RentaCar-API\RentaCar-API\obj\Debug\netcoreapp3.1\RentaCar-API.dll
 C:\Users\SULEYMAN\OneDrive\Masaüstü\RentaCar-API\RentaCar-API\obj\Debug\netcoreapp3.1\RentaCar-API.pdb
 C:\Users\SULEYMAN\OneDrive\Masaüstü\RentaCar-API\RentaCar-API\obj\Debug\netcoreapp3.1\RentaCar-API.genruntimeconfig.cache
+C:\Users\SULEYMAN\OneDrive\Masaüstü\RentaCar-API\RentaCar-API\bin\Debug\netcoreapp3.1\BCrypt.Net-Next.dll
+C:\Users\SULEYMAN\OneDrive\Masaüstü\RentaCar-API\RentaCar-API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll

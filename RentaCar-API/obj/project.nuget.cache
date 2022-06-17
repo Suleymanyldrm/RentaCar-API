@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "ewTl/V94pw9EumC6JVHI+uJwGHCSIcSlykp5bzZwWvTEhyWdPIgOwCpdavvWb91Wu4c+dmrCXAKlszK/OJz7OA==",
+  "dgSpecHash": "+H42x526YqaZovKH+eNYdpGnl2JcIAgQVVUMObj/AOTqsqVnwuRyh9KtZInEjDbsSzCkrHnvf0SEjCh3iljrvw==",
   "success": true,
   "projectFilePath": "C:\\Users\\SULEYMAN\\OneDrive\\Masaüstü\\RentaCar-API\\RentaCar-API\\RentaCar-API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\SULEYMAN\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\SULEYMAN\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\SULEYMAN\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.0.3\\microsoft.aspnetcore.authentication.jwtbearer.3.0.3.nupkg.sha512",
     "C:\\Users\\SULEYMAN\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.2.0\\microsoft.aspnetcore.cors.2.2.0.nupkg.sha512",
     "C:\\Users\\SULEYMAN\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\SULEYMAN\\.nuget\\packages\\microsoft.aspnetcore.http.extensions\\2.2.0\\microsoft.aspnetcore.http.extensions.2.2.0.nupkg.sha512",
